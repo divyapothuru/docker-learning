@@ -22,5 +22,9 @@ DISTROLESS IMAGE:
 -----------------
 By using this distroless image you can improve the security, why because by using this distroless image you can use only dependent depencies only you can't use other dependencies such as linux cmds any other cmds wont work so it provides more security.
 
+---------------------------------------------------------------------------------------------------------------------------------
+MAINLY BY USING MULTI-STAGE BUILDS--> WE CAN REDUCE THE IMAGE SIZE AND ALSO WE CAN IMPROVE THE SECURITY OF THE PARTICULAR IMAGE |
+---------------------------------------------------------------------------------------------------------------------------------
+
    
    
