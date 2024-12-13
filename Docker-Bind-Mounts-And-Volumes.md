@@ -20,3 +20,16 @@ We caneasily take Back-up in-case volumes and can mount to any external resource
 Docker -v
 docker --mount 
 both are same in -v <source dir:dest dir:permissions> whereas in --mount more specific (verbose mode) need to mention sorce,destinationa nd permissions.
+
+**DOCKER CMDS:**
+docker volume ls
+docker  volume create volume-name
+docker volume inspect volume-name -->to inspect where it is created in which logical volume
+docker volume rm volume-name-->to delete voulmes
+
+after creating docker image you need to mount the voulme to a container
+docker run -d --mount source=volume-name,target=/app image-name:latest
+docker ps-->to see all running containers
+docker inspect container-name/id
+
+-->If you want to delete a volume first you need to stop&remove an container and then you can delete volume.
