@@ -1,1 +1,12 @@
+DOCKER-NETWORKING:
+------------------
+1) container-1 needs to talk with container-2
+2) Container-1 needs to be isloated from container-2
 
+In order to communicate between each other it needs to connected by network.
+
+In host it will be having ETH0(Some IP Address) same as with container it has EHT0(some different IP address)--> so it wont communicate each other their will N/W error 
+So in order to communicate b/w host & container--> we need to have VIRTUAL ETHERNET - DOCKER0
+IF anyone deletes this VETH then there wont be any communication between the host and container and application inside the container--no internet.-->THIS IS 1)BRIDGE NETWORKING
+2)HOST NETWORK:this is not secure because the docker and host share same network and ip address so it is not secure.
+3)OVERLAY NETWORK: In container orchestration this is more usefull,If we have multiple hosts then you need to build clusters and inorder to have communication between these overlay network will be usefull.
