@@ -10,3 +10,21 @@ So in order to communicate b/w host & container--> we need to have VIRTUAL ETHER
 IF anyone deletes this VETH then there wont be any communication between the host and container and application inside the container--no internet.-->THIS IS 1)BRIDGE NETWORKING
 2)HOST NETWORK:this is not secure because the docker and host share same network and ip address so it is not secure.
 3)OVERLAY NETWORK: In container orchestration this is more usefull,If we have multiple hosts then you need to build clusters and inorder to have communication between these overlay network will be usefull.
+
+we can create CUSTOM-NETWORK for more secure way of networking.
+-->For suppose if their are 3 containers, 2 login & logout containers & 1 finacance container
+these 2 containers are connected by eth0,docker0 to host eth0 whereas with finance container as it needs to be more secure we can create custom n/w and then connect to host n/w.
+
+CMDS:
+docker network create test-network-->creates test-network n/w
+docker network ls
+docker network rm n/w-name
+
+docker run --name finance --network test-network image-name -->it will be creating container from image and attaching to n/w test-network
+docker run --name login image-name -->it will create login container with default n/w bridge
+docker run --name logout image-name -->it will create logout container with default n/w bridge
+-->these3 login&logout container can communicate with each other as they are in same network
+-->finance network can't communictae with login/logout containers bz it is in other container network
+you can check by docker exec -it conatiner-name/id and by using ping command
+
+docker run --name host-container --network=host-network image-name -->it wont have any ipaddress as it is in host network-->you can directly access it by using host ipaddress instead of container ipaddress.
